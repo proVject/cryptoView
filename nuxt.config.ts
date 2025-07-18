@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+  plugins: ['~/plugins/chart.js'],
   app:{
     head: {
       link:[
@@ -57,7 +58,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     includeAssets: ['favicon.png'],
     devOptions: {
-      enabled: true
+      enabled: false
     },
     manifest: {
       name: 'CryptoView',
@@ -91,4 +92,12 @@ export default defineNuxtConfig({
     },
   },
   modules: ['@vite-pwa/nuxt', '@nuxtjs/i18n'],
+  i18n: {
+    defaultLocale: 'en',
+    // cookieKey: 'i18n',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'uk', name: 'Українська', file: 'uk.json' }
+    ],
+  }
 })
