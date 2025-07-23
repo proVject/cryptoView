@@ -1,10 +1,18 @@
+import getSymbolFromCurrency from 'currency-symbol-map'
+
 export const formatCurrency = (value: number, currency = 'USD') => {
-    return new Intl.NumberFormat('en-US', {
+    const formatted = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency,
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
     }).format(value)
+
+    const customSymbol = getSymbolFromCurrency(currency)
+
+    if (customSymbol) {
+        return formatted.replace(/^(\D+)/, customSymbol); // замінює валютний префікс
+    }
 }
 
 export const formatNumber = (value: number) => {

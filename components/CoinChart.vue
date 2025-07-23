@@ -1,15 +1,19 @@
 <template>
-  <div class="p-4 bg-white dark:bg-stone-800 rounded-xl shadow">
-    <canvas ref="canvasEl" height="300"></canvas>
+  <div class="p-4 bg-white dark:bg-stone-800 rounded-b-xl shadow">
+    <!--    <canvas ref="canvasEl" height="300"></canvas>-->
+    <apex-charts ref="chart" class="mx-auto max-w-7xl" :options="chartOptions" :series="series"></apex-charts>
   </div>
 </template>
 
 <script setup>
-import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
-import { Chart, LineController, LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Filler } from 'chart.js'
+import ApexCharts from 'vue3-apexcharts'
+import {useMarketStore} from "~/store/market.js";
+import {useDark} from "@vueuse/core";
+import moment from "moment";
 
-Chart.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Filler)
+const chart = ref()
 
+const route = useRoute()
 const props = defineProps({
   prices: {
     type: Array,
@@ -17,58 +21,172 @@ const props = defineProps({
   }
 })
 
-const canvasEl = ref(null)
-let chartInstance = null
+const isDark = useDark()
 
-const createChart = () => {
-  const ctx = canvasEl.value.getContext('2d')
-  if (chartInstance) {
-    chartInstance.destroy()
-  }
+const marketStore = useMarketStore()
 
-  const labels = props.prices.map(p => new Date(p[0]).toLocaleDateString())
-  const data = props.prices.map(p => p[1])
+const coin = marketStore.marketList[0]
 
-  chartInstance = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [{
-        label: 'Price (USD)',
-        data,
-        borderColor: '#f59e0b', // amber
-        backgroundColor: 'rgba(245, 158, 11, 0.2)',
-        tension: 0.4,
-        fill: true
-      }]
+const currentCoinPrice = Number(coin.lastPrice)
+
+const prices = computed(() => {
+  return [...props.prices, [Date.now(), currentCoinPrice]]
+})
+
+const labels = computed(() => prices.value.map(p => moment(p[0]).format('hh:mm DD-MM-YYYY')))
+const data = computed(() => prices.value.map(p => p[1]))
+
+const chartOptions = computed(() => ({
+  chart: {
+    id: route.name,
+    type: 'area',
+    foreColor: isDark.value ? 'var(--color-white)' : 'var(--color-gray-900)',
+    toolbar: {
+      show: false,
     },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {display: false},
-        tooltip: {mode: 'index', intersect: false}
-      },
-      scales: {
-        x: {
-          ticks: {color: '#888'}
-        },
-        y: {
-          ticks: {color: '#888'}
+    zoom: {
+      enabled: true
+    },
+  },
+  annotations: {
+    yaxis: [
+      {
+        y: data.value.at(-1),
+        borderColor: 'var(--color-amber-500)',
+        label: {
+          borderColor: 'var(--color-amber-500)',
+          style: {
+            color: '#fff',
+            background: 'var(--color-amber-500)'
+          },
+          text: String(data.value.at(-1))
         }
       }
+    ]
+  },
+  dataLabels: {
+    enabled: false
+  },
+  fill: {
+    colors: ['var(--color-amber-500)'],
+    type: 'gradient',
+    gradient: {
+      colors: undefined,
+      shade: 'light',
+      gradientToColors: ['var(--color-amber-200)'], // колір переходу
+      opacityFrom: 0.8,
+      opacityTo: 0.2,
+    },
+  },
+  stroke: {
+    curve: 'straight'
+  },
+  xaxis: {
+    // show: false,
+    categories: labels.value,
+    labels: {
+      show: false,
+      formatter: function (value) {
+        return `${value}$`;
+      }
     }
-  })
-}
+  },
+  grid: {
+    show: false,
+  },
+  tooltip: {
+    enabled: true,
+    enabledOnSeries: undefined,
+    followCursor: true,
+    // custom: undefined,
+    // fillSeriesColor: 'rgba(245, 158, 11, 0.2)',
+    theme: isDark.value ? 'dark': 'light',
+    // style: {
+    //   fontSize: '12px',
+    //   fontFamily: undefined
+    // },
+    // onDatasetHover: {
+    //   highlightDataSeries: false,
+    // },
+    // x: {
+    //   show: true,
+    //   format: 'dd MMM',
+    //   formatter: undefined,
+    // },
+    // y: {
+    //   formatter: undefined,
+    //   title: {
+    //     formatter: (seriesName) => seriesName,
+    //   },
+    // },
+    // z: {
+    //   formatter: undefined,
+    //   title: 'Size: '
+    // },
+    // marker: {
+    //   show: true,
+    // },
+    // items: {
+    //   display: flex,
+    // },
+    // fixed: {
+    //   enabled: false,
+    //   position: 'topRight',
+    //   offsetX: 0,
+    //   offsetY: 0,
+    // },
+  },
+  yaxis: {
+    opposite: true
+  },
+  legend: {
+    show: true,
+  },
+}))
 
-onMounted(() => {
-  if (props.prices?.length) createChart()
-})
+const series = computed(() => [
+  {
+    name: 'Price (USDT)',
+    data: data.value,
+    parsing: {
+      x: 'date'  // Global x field
+    },
+  }
+])
 
-onBeforeUnmount(() => {
-  if (chartInstance) chartInstance.destroy()
-})
+// watch([data], () => {
+// chart.value.refresh()
+// })
 
-watch(() => props.prices, () => {
-  if (props.prices?.length) createChart()
-})
+//
+// chartInstance = new Chart(ctx, {
+//   type: 'line',
+//   data: {
+//     labels,
+//     datasets: [{
+//       label: 'Price (USDT)',
+//       data,
+//       borderColor: '#f59e0b', // amber
+//       backgroundColor: 'rgba(245, 158, 11, 0.2)',
+//       tension: 0.4,
+//       fill: true
+//     }]
+//   },
+//   options: {
+//     responsive: true,
+//     plugins: {
+//       legend: {display: false},
+//       tooltip: {mode: 'index', intersect: false}
+//     },
+//     scales: {
+//       x: {
+//         ticks: {color: '#888'}
+//       },
+//       y: {
+//         ticks: {color: '#888'}
+//       }
+//     }
+//   }
+// })
+// }
 </script>

@@ -1,3 +1,6 @@
 {
-  "hello": "HELLO"
+  "footer": {
+    "made_with": "Made with ❤\uFE0F by",
+    "contact_me": "Contact me"
+  }
 }

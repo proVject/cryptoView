@@ -8,11 +8,10 @@
 </template>
 
 <script setup>
-import { useDark, useToggle } from '@vueuse/core'
+import { useDark } from '@vueuse/core'
+import {useAppMeta} from "~/composables/useAppMeta.js";
+useAppMeta()
 
 const isDark = useDark()
-const toggleDark = useToggle(isDark)
-
-console.log(isDark.value)
-// isDark.value = false
+// const toggleDark = useToggle(isDark)
 </script>

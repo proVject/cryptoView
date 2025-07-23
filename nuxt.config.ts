@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
-  plugins: ['~/plugins/chart.js'],
   app:{
     head: {
       link:[
@@ -91,13 +90,17 @@ export default defineNuxtConfig({
       ]
     },
   },
-  modules: ['@vite-pwa/nuxt', '@nuxtjs/i18n'],
+  modules: ['@vite-pwa/nuxt', '@nuxtjs/i18n', '@pinia/nuxt', '@nuxt/icon', '@element-plus/nuxt'],
   i18n: {
     defaultLocale: 'en',
-    // cookieKey: 'i18n',
     locales: [
-      { code: 'en', name: 'English', file: 'en.json' },
-      { code: 'uk', name: 'Українська', file: 'uk.json' }
+      { code: 'en', name: 'EN', file: 'en.json' },
+      { code: 'uk', name: 'UA', file: 'uk.json' }
     ],
+  },
+  runtimeConfig: {
+    public: {
+      coingeckoApiKey: import.meta.env.COIN_GECKO_API_KEY
+    }
   }
 })

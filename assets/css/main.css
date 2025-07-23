@@ -5,3 +5,35 @@
 html, body, #app {
     min-height: 100%;
 }
+
+html body {
+    --el-fill-color-blank: var(--color-amber-50);
+    --el-bg-color-overlay: var(--color-amber-50);
+    --el-text-color-regular: var(--color-amber-900);
+    --el-text-color-placeholder: var(--color-gray-500);
+    --el-fill-color-light: #fff;
+    --el-border: none;
+    --el-border-color: transparent;
+    --el-border-color-light: transparent;
+    --el-border-color-hover: var(--color-amber-500);
+    --el-color-primary: var(--color-amber-500);
+    --el-border-radius-base: 30px;
+}
+
+html.dark body {
+    --el-fill-color-blank: var(--color-stone-900);
+    --el-bg-color-overlay: var(--color-stone-900);
+    --el-fill-color-light: var(--color-stone-700);
+    --el-text-color-regular: var(--color-stone-100);
+    --el-text-color-placeholder: var(--color-stone-400);
+    --el-border: none;
+    --el-border-radius-base: 30px;
+    --el-popover-border-radius: 16px;
+}
+
+.el-input__wrapper{
+    padding: 4px 18px !important;
+}
+.el-popper__arrow{
+  display: none !important;
+}
