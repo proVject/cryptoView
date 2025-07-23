@@ -41,7 +41,7 @@ onMounted(() => {
   <el-autocomplete
       v-model="search"
       class="inline-input w-50"
-      placeholder="Search..."
+      :placeholder="$t('header.search_placeholder')"
       @select="handleSelect"
       :fetch-suggestions="querySearch"
   >

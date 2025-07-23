@@ -8,8 +8,8 @@
       </client-only>
     </h1>
 
-    <div v-if="marketStore.marketListLoading" class="text-gray-500 dark:text-stone-400">Loading data...</div>
-    <div v-else-if="!coin">Coin not found</div>
+    <div v-if="marketStore.marketListLoading" class="text-gray-500 dark:text-stone-400">{{ $t('common.loading') }}</div>
+    <div v-else-if="!coin">{{ $t('coin_page.not_found') }}</div>
     <div v-else>
       <div class="mb-4 flex items-center gap-5">
         <p class="text-2xl md:text-3xl font-medium" :class="priceClasses">
@@ -24,7 +24,7 @@
       </div>
 
       <div class="overflow-x-auto py-1 flex items-center bg-amber-100 dark:bg-stone-700 text-amber-900 dark:text-stone-100 px-3 gap-3 rounded-t-xl">
-        <p class="font-light">Time:</p>
+        <p class="font-light">{{ $t('coin_page.time') }}:</p>
         <div class="flex items-center">
           <button
               v-for="i of KLINES_TIME"
@@ -33,7 +33,7 @@
               :class="interval.value === i.value && 'bg-amber-50 dark:bg-stone-900'"
               class="px-2 py-1 text-nowrap"
           >
-            {{i.label}}
+            {{$t(i.label)}}
           </button>
         </div>
       </div>
@@ -57,7 +57,7 @@ const coinsStore = useCoinsStore()
 const route = useRoute()
 const symbolsList = ref([route.params.id.toString().toUpperCase() + 'USDT'])
 
-const interval = ref({ label: '1 day', value: '1d', interval: '30m', limit: 48 },)
+const interval = ref({ label: 'chart_periods.1_day', value: '1d', interval: '30m', limit: 48 },)
 const history = ref(null)
 
 const coinShortName = computed(() => {

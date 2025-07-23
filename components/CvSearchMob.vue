@@ -40,14 +40,14 @@ watchEffect(() => {
   </div>
   <el-drawer class="no-transition min-w-full !bg-amber-50 dark:!bg-stone-900" header-class="!mb-0 !gap-4 !bg-amber-100 text-amber-900 dark:!bg-stone-700 h-16 !py-0 !text-gray-900 dark:!text-white" body-class="!px-0" direction="rtl" v-model="isOpen">
     <template #header>
-      <el-input v-model="searchInput">
+      <el-input :placeholder="$t('header.search_placeholder')" v-model="searchInput">
         <template #prefix>
           <icon size="20" name="mdi:search" />
         </template>
       </el-input>
     </template>
     <template #default>
-      <div v-if="!coinsFiltered.length" class="text-center text-gray-500 dark:text-stone-400">No coins found</div>
+      <div v-if="!coinsFiltered.length" class="text-center text-gray-500 dark:text-stone-400">{{ $t('header.search_empty') }}</div>
       <div v-show="coinsFiltered.length" v-for="item of coinsFiltered" :key="item.name" @click="onClickCoin(item)" class="cursor-pointer hover:bg-white dark:hover:bg-stone-700 px-4 flex items-center gap-2 py-2">
         <img :src="item.image" :alt="item.name" class="h-6 w-6" />
         <div>

@@ -1,6 +1,49 @@
 {
+  "header": {
+    "search_placeholder": "Пошук",
+    "home": "Головна",
+    "favorites": "Обрані",
+    "search_empty": "Монети не знайдено",
+    "language": "Мова",
+    "currency": "Валюта",
+    "dark_mode": "Темна тема"
+  },
+  "chart_periods": {
+    "1_min": "1 хв",
+    "30_min": "30 хв",
+    "1_hour": "1 год",
+    "6_hours": "6 год",
+    "12_hours": "12 год",
+    "1_day": "1 день",
+    "3_days": "3 дні",
+    "1_week": "1 тиждень",
+    "1_month": "1 місяць"
+  },
+  "index": {
+    "title": "Ринок"
+  },
+  "coins_table": {
+    "coin": "Монета",
+    "price": "Ціна",
+    "24h_change": "Зміна (24 год)"
+  },
+  "favorites": {
+    "title": "Обрані",
+    "no_added_coins_message": "Ви ще не додали жодної монети до обраних."
+  },
+  "chart": {
+    "tooltip_text": "Ціна ({currency})"
+  },
   "footer": {
     "made_with": "Зроблено з ❤️ від",
     "contact_me": "Зв'язатися зі мною"
+  },
+  "coin_page": {
+    "not_found": "Монету не знайдено",
+    "time": "Час"
+  },
+  "common": {
+    "loading": "Завантаження даних...",
+    "error": "Дані не знайдено"
   }
 }

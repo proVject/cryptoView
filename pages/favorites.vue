@@ -1,19 +1,20 @@
 <template>
   <div>
     <h1 class="text-2xl font-bold mb-4 text-amber-700 dark:text-amber-400">
-      Favorites
+      {{ $t('Favorites.title') }}
     </h1>
 
     <div v-if="marketStore.marketListLoading" class="text-gray-500 dark:text-stone-400">
-      Loading crypto data...
+      {{ $t('common.loading') }}
     </div>
 
     <div v-else-if="marketStore.marketListError" class="text-red-500">
-      {{ marketStore.marketListError }}
+      {{ $t('common.error') }}
+<!--      {{ marketStore.marketListError }}-->
     </div>
 
     <div v-else-if="!favoriteNow.length" class="text-gray-500 dark:text-stone-400">
-      You haven't added any favorites yet.
+      {{ $t('favorites.no_added_coins_message') }}
     </div>
 
     <CoinTable v-else :coins="favoriteNow" />

@@ -10,6 +10,7 @@ import ApexCharts from 'vue3-apexcharts'
 import {useMarketStore} from "~/store/market.js";
 import {useDark} from "@vueuse/core";
 import moment from "moment";
+const { t } = useI18n();
 
 const chart = ref()
 
@@ -86,9 +87,9 @@ const chartOptions = computed(() => ({
     categories: labels.value,
     labels: {
       show: false,
-      formatter: function (value) {
-        return `${value}$`;
-      }
+      // formatter: function (value) {
+      //   return `${value}$`;
+      // }
     }
   },
   grid: {
@@ -146,7 +147,7 @@ const chartOptions = computed(() => ({
 
 const series = computed(() => [
   {
-    name: 'Price (USDT)',
+    name: t('chart.tooltip_text', { currency: 'USDT' }),
     data: data.value,
     parsing: {
       x: 'date'  // Global x field

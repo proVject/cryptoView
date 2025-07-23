@@ -11,8 +11,10 @@ import CvLocaleSelect from "~/components/CvLocaleSelect.vue";
           <div>CryptoView</div>
         </NuxtLink>
         <nav class="hidden md:flex space-x-2 flex items-center h-full">
-          <NuxtLink to="/" exact-active-class="text-amber-950 border-amber-950 dark:text-amber-300 dark:border-amber-300" class="border-b-2 border-amber-50/0 h-full flex px-2 items-center outline-0">Home</NuxtLink>
-          <NuxtLink to="/favorites" exact-active-class="text-amber-950 border-amber-950 dark:text-amber-300 dark:border-amber-300" class="border-b-2 border-amber-50/0 h-full flex px-2 items-center outline-0">Favorites</NuxtLink>
+          <NuxtLink to="/" exact-active-class="text-amber-950 border-amber-950 dark:text-amber-300 dark:border-amber-300" class="border-b-2 border-amber-50/0 h-full flex px-2 items-center outline-0">
+            {{ $t('header.home') }}</NuxtLink>
+          <NuxtLink to="/favorites" exact-active-class="text-amber-950 border-amber-950 dark:text-amber-300 dark:border-amber-300" class="border-b-2 border-amber-50/0 h-full flex px-2 items-center outline-0">
+            {{ $t('header.favorites') }}</NuxtLink>
         </nav>
       </div>
       <div class="hidden md:flex items-center gap-2">

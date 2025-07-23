@@ -4,9 +4,9 @@
       <thead class="bg-amber-100 dark:bg-stone-700 text-amber-900 dark:text-stone-100">
       <tr>
         <th class="pl-4 py-3 w-[1px] hidden sm:table-cell"></th>
-        <th class="px-4 py-3">Coin</th>
-        <th class="px-4 py-3">Price</th>
-        <th class="px-4 py-3">24h Change</th>
+        <th class="px-4 py-3">{{ $t('coins_table.coin') }}</th>
+        <th class="px-4 py-3">{{ $t('coins_table.price') }}</th>
+        <th class="px-4 py-3">{{ $t('coins_table.24h_change') }}</th>
       </tr>
       </thead>
       <tbody class="divide-y divide-gray-200 dark:divide-stone-700">

@@ -1,6 +1,49 @@
 {
+  "header": {
+    "search_placeholder": "Search",
+    "home": "Home",
+    "favorites": "Favorites",
+    "search_empty": "No coins found",
+    "language": "Language",
+    "currency": "Currency",
+    "dark_mode": "Dark mode"
+  },
+  "chart_periods": {
+    "1_min": "1 min",
+    "30_min": "30 min",
+    "1_hour": "1 hour",
+    "6_hours": "6 hours",
+    "12_hours": "12 hours",
+    "1_day": "1 day",
+    "3_days": "3 days",
+    "1_week": "1 week",
+    "1_month": "1 month"
+  },
+  "index": {
+    "title": "Market"
+  },
+  "coins_table": {
+    "coin": "Coin",
+    "price": "Price",
+    "24h_change": "24h Change"
+  },
+  "favorites": {
+    "title": "Favorites",
+    "no_added_coins_message": "You haven't added any favorites yet."
+  },
+  "chart": {
+    "tooltip_text": "Price ({currency})"
+  },
   "footer": {
     "made_with": "Made with ❤\uFE0F by",
     "contact_me": "Contact me"
+  },
+  "coin_page": {
+    "not_found": "Coin not found",
+    "time": "Time"
+  },
+  "common": {
+    "loading": "Loading data...",
+    "error": "The data is not found"
   }
 }

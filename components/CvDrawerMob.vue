@@ -25,19 +25,19 @@ watchEffect(() => {
       <template #default>
         <div class="flex flex-col gap-4 mb-6">
           <nav class="space-x-2 flex flex-col gap-4">
-            <NuxtLink @click="isOpen = false" to="/" exact-active-class="text-amber-950 dark:text-amber-300" class="h-full flex px-2 items-center outline-0">Home</NuxtLink>
-            <NuxtLink @click="isOpen = false" to="/favorites" exact-active-class="text-amber-950 dark:text-amber-300" class="h-full flex px-2 items-center outline-0">Favorites</NuxtLink>
+            <NuxtLink @click="isOpen = false" to="/" exact-active-class="text-amber-950 dark:text-amber-300" class="h-full flex px-2 items-center outline-0"> {{ $t('header.home') }}</NuxtLink>
+            <NuxtLink @click="isOpen = false" to="/favorites" exact-active-class="text-amber-950 dark:text-amber-300" class="h-full flex px-2 items-center outline-0">{{ $t('header.favorites') }}</NuxtLink>
           </nav>
           <div class="flex flex-col gap-1">
-            <p class="text-gray-500 dark:text-stone-400 text-sm">Language:</p>
+            <p class="text-gray-500 dark:text-stone-400 text-sm">{{ $t('header.language') }}:</p>
             <cv-locale-select />
           </div>
           <div class="flex flex-col gap-1">
-            <p class="text-gray-500 dark:text-stone-400 text-sm">Currency:</p>
+            <p class="text-gray-500 dark:text-stone-400 text-sm">{{ $t('header.currency') }}:</p>
             <cv-currency-select />
           </div>
           <div class="flex flex-col gap-1">
-            <p class="text-gray-500 dark:text-stone-400 text-sm">Dark mode:</p>
+            <p class="text-gray-500 dark:text-stone-400 text-sm">{{ $t('header.dark_mode') }}:</p>
             <cv-theme-toggle />
           </div>
         </div>
