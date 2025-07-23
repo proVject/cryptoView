@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="text-2xl font-bold mb-4 text-amber-700 dark:text-amber-400">
-      {{ $t('Favorites.title') }}
+      {{ $t('favorites.title') }}
     </h1>
 
     <div v-if="marketStore.marketListLoading" class="text-gray-500 dark:text-stone-400">

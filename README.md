@@ -1,75 +1,49 @@
-# Nuxt Minimal Starter
+# 🪙 CryptoView
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+**CryptoView** is a modern, real-time cryptocurrency tracker built with Nuxt 3. It features live updates from Binance, internationalization, currency selection, dark/light theme, and a mobile-first responsive design.
 
-## Setup
+🔗 [Live Demo](https://crypto-view-mocha.vercel.app/favorites)
 
-Make sure to install dependencies:
+---
+
+## 🚀 Features
+
+- 📊 Display of crypto assets with current price, 24h % change, and dynamic currency conversion
+- 🔄 Real-time updates via Binance WebSocket API
+- 💱 Switch between multiple fiat currencies (USD, EUR, UAH, etc.)
+- 🌐 Multilingual support: English 🇺🇸 & Ukrainian 🇺🇦
+- 🌗 Dark & Light mode support (TailwindCSS)
+- 🔍 Full-text search for coins
+- ⭐ Favorites stored in `localStorage`
+- 📈 Individual coin page with detailed chart (intervals: minute, hour, day, week, month)
+- 🖼️ Coin icons and branding
+- ⚙️ PWA support: offline mode, `manifest.json`, caching
+- 🧠 SEO-optimized with Open Graph / Twitter metadata
+- 📱 Fully responsive design (mobile-first)
+
+---
+
+## 🛠️ Tech Stack
+
+- [Nuxt 3](https://nuxt.com/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Element Plus UI](https://element-plus.org/)
+- [ApexCharts](https://apexcharts.com/)
+- [Pinia](https://pinia.vuejs.org/)
+- [VueUse](https://vueuse.org/)
+- [Binance API](https://binance-docs.github.io/apidocs/spot/en/)
+- [@vite-pwa/nuxt](https://vite-pwa-org.netlify.app/frameworks/nuxt.html)
+- [@nuxtjs/i18n](https://i18n.nuxtjs.org/)
+- [moment.js](https://momentjs.com/)
+- Deployed via [Vercel](https://vercel.com/)
+
+---
+
+
+## 📦 Getting Started
 
 ```bash
-# npm
+git clone https://github.com/proVject/cryptoView.git
+cd cryptoView
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

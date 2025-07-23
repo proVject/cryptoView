@@ -1,6 +1,6 @@
 <template>
     <tr
-        class="hover:bg-amber-50 dark:hover:bg-stone-700"
+        class="hover:bg-amber-50 dark:hover:bg-stone-700 cursor-pointer"
         @click="navigateTo($localePath({ name: 'coin-id', params: {id: row.shortName} }))"
     >
       <td class="pl-4 py-2 hidden sm:table-cell" @click.stop>
