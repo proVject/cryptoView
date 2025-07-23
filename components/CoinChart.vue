@@ -45,7 +45,7 @@ const chartOptions = computed(() => ({
       show: false,
     },
     zoom: {
-      enabled: true
+      enabled: false
     },
   },
   annotations: {
